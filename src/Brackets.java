@@ -1,6 +1,25 @@
 import java.util.Scanner;
 
 public class Brackets {
+    public static void determineStringBalance (String str) {
+        String initStr = str;
+        String[] brackets = {"()", "[]", "{}"};
+        while (str.length() > 1) {
+            String oldStr = str;
+            for (String bracket:brackets) {
+                str = findBrackers(str, bracket);
+                System.out.println(str);
+            }
+            if (str.equals(oldStr)) {
+                System.out.println(initStr + " is not balanced");
+                str = "1";
+            }
+        }
+        if (str.length() == 0) {
+            System.out.println(initStr + " is balanced");
+        }
+    }
+
     public static String findBrackers (String str, String subStr) {
         int number = str.indexOf(subStr);
         if (number >= 0) {
@@ -13,21 +32,6 @@ public class Brackets {
         Scanner sc = new Scanner(System.in);
         System.out.println("enter the string: ");
         String str = sc.nextLine();
-        String initStr = str;
-        String[] brackets = {"[]", "()", "{}"};
-        while (str.length() > 1) {
-            String oldStr = str;
-            for (String i:brackets) {
-                str = findBrackers(str, i);
-                System.out.println(str);
-            }
-            if (str.equals(oldStr)) {
-                System.out.println(initStr + " is not balanced");
-                str = "1";
-            }
-        }
-        if (str.length() == 0) {
-            System.out.println(initStr + " is balanced");
-        }
+        determineStringBalance(str);
     }
 }
