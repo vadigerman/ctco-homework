@@ -10,14 +10,11 @@ public class BracketsStack {
         for (int i = 0; i < str.length(); i++) {
             if (str.charAt(i) == '{' || str.charAt(i) == '(' || str.charAt(i) == '[') {
                 strStack += str.charAt(i);
-            } else if (str.charAt(i) == '}' && strStack.charAt(strStack.length() - 1) == '{') {
-                strStack = strStack.substring(0, strStack.length() - 1);
-            } else if (str.charAt(i) == ')' && strStack.charAt(strStack.length() - 1) == '(') {
-                strStack = strStack.substring(0, strStack.length() - 1);
-            } else if (str.charAt(i) == ']' && strStack.charAt(strStack.length() - 1) == '[') {
+            } else if (str.charAt(i) == '}' && strStack.charAt(strStack.length() - 1) == '{' ||
+                    str.charAt(i) == ')' && strStack.charAt(strStack.length() - 1) == '(' ||
+                    str.charAt(i) == ']' && strStack.charAt(strStack.length() - 1) == '[') {
                 strStack = strStack.substring(0, strStack.length() - 1);
             } else {
-                System.out.println("invalid symbol in the string");
                 i = str.length() - 1;
             }
         }
